@@ -1,0 +1,8 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>InnovateFund</title>
+<script>
+  // GitHub Pages SPA fallback: send any unknown path back to index.html
+  var base = '/InnovateFund/';
+  var path = location.pathname.slice(base.length - 1);
+  location.replace(base + '?p=' + encodeURIComponent(path + location.search + location.hash));
+</script></head><body></body></html>

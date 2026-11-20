@@ -6,9 +6,17 @@ import App from './App';
 import { WalletProvider } from './hooks/useWallet';
 import './index.css';
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+// Restore the path saved by public/404.html (GitHub Pages SPA fallback)
+const saved = new URLSearchParams(window.location.search).get('p');
+if (saved) {
+  window.history.replaceState(null, '', basename + saved);
+}
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <WalletProvider>
         <App />
         <Toaster
