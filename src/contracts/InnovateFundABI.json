@@ -1,0 +1,824 @@
+[
+  {
+    "type": "function",
+    "name": "MAX_DURATION",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "MAX_MILESTONES",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "MIN_DURATION",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "campaignCount",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "contributions",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "createCampaign",
+    "inputs": [
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "type": "string"
+      },
+      {
+        "name": "goal",
+        "type": "uint256"
+      },
+      {
+        "name": "durationSeconds",
+        "type": "uint256"
+      },
+      {
+        "name": "mDescriptions",
+        "type": "string[]"
+      },
+      {
+        "name": "mAmounts",
+        "type": "uint256[]"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "contribute",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "payable"
+  },
+  {
+    "type": "function",
+    "name": "getCampaignDetails",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "info",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "name": "owner",
+            "type": "address"
+          },
+          {
+            "name": "title",
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "goal",
+            "type": "uint256"
+          },
+          {
+            "name": "raised",
+            "type": "uint256"
+          },
+          {
+            "name": "deadline",
+            "type": "uint256"
+          },
+          {
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "name": "milestoneCount",
+            "type": "uint256"
+          },
+          {
+            "name": "releasedCount",
+            "type": "uint256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getContributors",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getFundingProgress",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "raised",
+        "type": "uint256"
+      },
+      {
+        "name": "goal",
+        "type": "uint256"
+      },
+      {
+        "name": "percent",
+        "type": "uint256"
+      },
+      {
+        "name": "secondsLeft",
+        "type": "uint256"
+      },
+      {
+        "name": "status",
+        "type": "uint8"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getMilestone",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      },
+      {
+        "name": "milestoneId",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple",
+        "components": [
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "name": "evidenceUrl",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "name": "approveWeight",
+            "type": "uint256"
+          },
+          {
+            "name": "rejectWeight",
+            "type": "uint256"
+          },
+          {
+            "name": "round",
+            "type": "uint256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getMilestones",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "tuple[]",
+        "components": [
+          {
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "name": "amount",
+            "type": "uint256"
+          },
+          {
+            "name": "evidenceUrl",
+            "type": "string"
+          },
+          {
+            "name": "status",
+            "type": "uint8"
+          },
+          {
+            "name": "approveWeight",
+            "type": "uint256"
+          },
+          {
+            "name": "rejectWeight",
+            "type": "uint256"
+          },
+          {
+            "name": "round",
+            "type": "uint256"
+          }
+        ]
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getTransparency",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "totalIn",
+        "type": "uint256"
+      },
+      {
+        "name": "totalReleased",
+        "type": "uint256"
+      },
+      {
+        "name": "totalRefunded",
+        "type": "uint256"
+      },
+      {
+        "name": "balance",
+        "type": "uint256"
+      },
+      {
+        "name": "contributorCount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "hasVotedOnMilestone",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      },
+      {
+        "name": "milestoneId",
+        "type": "uint256"
+      },
+      {
+        "name": "voter",
+        "type": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "refund",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "requestMilestoneRelease",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      },
+      {
+        "name": "milestoneId",
+        "type": "uint256"
+      },
+      {
+        "name": "evidenceUrl",
+        "type": "string"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "voteMilestone",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      },
+      {
+        "name": "milestoneId",
+        "type": "uint256"
+      },
+      {
+        "name": "support",
+        "type": "bool"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "CampaignCreated",
+    "anonymous": false,
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "owner",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "indexed": false
+      },
+      {
+        "name": "goal",
+        "type": "uint256",
+        "indexed": false
+      },
+      {
+        "name": "deadline",
+        "type": "uint256",
+        "indexed": false
+      },
+      {
+        "name": "milestoneCount",
+        "type": "uint256",
+        "indexed": false
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "Contributed",
+    "anonymous": false,
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "contributor",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false
+      },
+      {
+        "name": "totalRaised",
+        "type": "uint256",
+        "indexed": false
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "MilestoneRequested",
+    "anonymous": false,
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "milestoneId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "round",
+        "type": "uint256",
+        "indexed": false
+      },
+      {
+        "name": "evidenceUrl",
+        "type": "string",
+        "indexed": false
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "Voted",
+    "anonymous": false,
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "milestoneId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "voter",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "name": "support",
+        "type": "bool",
+        "indexed": false
+      },
+      {
+        "name": "weight",
+        "type": "uint256",
+        "indexed": false
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "MilestoneApproved",
+    "anonymous": false,
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "milestoneId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "approveWeight",
+        "type": "uint256",
+        "indexed": false
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "MilestoneRejected",
+    "anonymous": false,
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "milestoneId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "rejectWeight",
+        "type": "uint256",
+        "indexed": false
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "FundsReleased",
+    "anonymous": false,
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "milestoneId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "owner",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false
+      }
+    ]
+  },
+  {
+    "type": "event",
+    "name": "Refunded",
+    "anonymous": false,
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256",
+        "indexed": true
+      },
+      {
+        "name": "contributor",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "Reentrancy",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "CampaignNotFound",
+    "inputs": [
+      {
+        "name": "campaignId",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "NotCampaignOwner",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "EmptyTitle",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidGoal",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidDuration",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidMilestones",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "MilestoneTotalMismatch",
+    "inputs": [
+      {
+        "name": "total",
+        "type": "uint256"
+      },
+      {
+        "name": "goal",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "ZeroAmount",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "OwnerCannotContribute",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "CampaignNotFunding",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "ExceedsRemainingGoal",
+    "inputs": [
+      {
+        "name": "sent",
+        "type": "uint256"
+      },
+      {
+        "name": "remaining",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "CampaignNotSuccessful",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "CampaignNotFailed",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InvalidMilestone",
+    "inputs": [
+      {
+        "name": "milestoneId",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "MilestoneOutOfOrder",
+    "inputs": [
+      {
+        "name": "milestoneId",
+        "type": "uint256"
+      },
+      {
+        "name": "expected",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "MilestoneAlreadyPending",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "MilestoneAlreadyReleased",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "EmptyEvidence",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "NotContributor",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "MilestoneNotPending",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "AlreadyVoted",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "InsufficientBalance",
+    "inputs": [
+      {
+        "name": "needed",
+        "type": "uint256"
+      },
+      {
+        "name": "available",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "NothingToRefund",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "TransferFailed",
+    "inputs": []
+  }
+]
