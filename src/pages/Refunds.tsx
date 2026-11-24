@@ -80,7 +80,7 @@ export default function Refunds() {
     <SidebarLayout>
       <div>
         <h1 className="section-title">Refunds</h1>
-        <p className="mt-1 text-slate-400">Refunds are available only when a campaign&apos;s deadline has passed without reaching its goal.</p>
+        <p className="mt-1 text-slate-500">Refunds are available only when a campaign&apos;s deadline has passed without reaching its goal.</p>
       </div>
 
       {error ? (
@@ -96,17 +96,17 @@ export default function Refunds() {
             return (
               <div key={c.id} className="glass flex flex-wrap items-center justify-between gap-4 p-5">
                 <div className="min-w-0">
-                  <Link to={`/campaigns/${c.id}`} className="font-bold text-white hover:text-electric">#{c.id} · {c.title}</Link>
-                  <p className="mt-1 text-sm text-slate-400">
-                    {st === 'refunded' ? 'Refund already received.' : <>Your contribution: <b className="text-white">{fmtEth(amount)} ETH</b></>}
+                  <Link to={`/campaigns/${c.id}`} className="font-bold text-slate-800 hover:text-electric">#{c.id} · {c.title}</Link>
+                  <p className="mt-1 text-sm text-slate-500">
+                    {st === 'refunded' ? 'Refund already received.' : <>Your contribution: <b className="text-slate-800">{fmtEth(amount)} ETH</b></>}
                   </p>
                   <p className="mt-1 text-xs text-slate-500">Raised {fmtEth(c.raised)} / {fmtEth(c.goal)} ETH{st === 'active' ? ` · ${timeLeft(c.deadline)}` : ''}</p>
                 </div>
                 <div className="flex items-center gap-3">
-                  {st === 'eligible' && <span className="badge border-emerald-400/30 bg-emerald-400/10 text-emerald-300">Eligible</span>}
-                  {st === 'refunded' && <span className="badge border-purple-400/30 bg-purple-400/10 text-purple-300">Refunded</span>}
-                  {st === 'active' && <span className="badge border-cyan-400/30 bg-cyan-400/10 text-cyan-300">Not eligible — still funding</span>}
-                  {st === 'locked' && <span className="badge border-slate-500/30 bg-slate-500/10 text-slate-300">Not eligible — campaign funded</span>}
+                  {st === 'eligible' && <span className="badge border-emerald-500/30 bg-emerald-500/10 text-emerald-700">Eligible</span>}
+                  {st === 'refunded' && <span className="badge border-blue-600/30 bg-blue-600/10 text-blue-800">Refunded</span>}
+                  {st === 'active' && <span className="badge border-emerald-500/30 bg-emerald-500/10 text-emerald-700">Not eligible — still funding</span>}
+                  {st === 'locked' && <span className="badge border-slate-500/30 bg-slate-500/10 text-slate-600">Not eligible — campaign funded</span>}
                   {st === 'eligible' && (
                     <button className="btn-primary" disabled={flow.isBusy} onClick={() => void requestRefund(c)}>
                       <Undo2 className="h-4 w-4" /> Request Refund

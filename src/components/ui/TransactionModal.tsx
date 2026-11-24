@@ -12,46 +12,46 @@ export default function TransactionModal({ flow }: { flow: TxFlow }) {
   const stepIndex = status === 'idle' ? 0 : status === 'awaiting' ? 1 : status === 'pending' ? 2 : 3;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/70 p-4 backdrop-blur-sm sm:items-center" role="dialog" aria-modal="true">
-      <div className="glass w-full max-w-md animate-fadeUp bg-navy-900/95 p-6">
-        <h3 className="text-lg font-bold text-white">{req.title}</h3>
-        {req.description && <p className="mt-1 text-sm text-slate-400">{req.description}</p>}
+    <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/50 p-4 backdrop-blur-sm sm:items-center" role="dialog" aria-modal="true">
+      <div className="glass w-full max-w-md animate-fadeUp bg-white p-6">
+        <h3 className="text-lg font-bold text-slate-800">{req.title}</h3>
+        {req.description && <p className="mt-1 text-sm text-slate-500">{req.description}</p>}
 
         <div className="mt-5 flex items-center gap-1">
           {STEPS.map((s, i) => (
             <div key={s} className="flex-1">
-              <div className={`h-1.5 rounded-full transition-all ${status === 'failed' && i === stepIndex ? 'bg-rose-500' : i <= stepIndex ? 'bg-gradient-to-r from-electric to-purple' : 'bg-white/10'}`} />
-              <p className={`mt-1 text-center text-[10px] uppercase tracking-wide ${i <= stepIndex ? 'text-slate-300' : 'text-slate-600'}`}>{s}</p>
+              <div className={`h-1.5 rounded-full transition-all ${status === 'failed' && i === stepIndex ? 'bg-red-500' : i <= stepIndex ? 'bg-gradient-to-r from-navy-900 to-electric' : 'bg-slate-100'}`} />
+              <p className={`mt-1 text-center text-[10px] uppercase tracking-wide ${i <= stepIndex ? 'text-slate-600' : 'text-slate-400'}`}>{s}</p>
             </div>
           ))}
         </div>
 
-        <dl className="mt-5 space-y-2 rounded-xl border border-white/10 bg-white/[0.03] p-4 text-sm">
+        <dl className="mt-5 space-y-2 rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm">
           {req.details.map((d) => (
             <div key={d.label} className="flex justify-between gap-4">
-              <dt className="text-slate-400">{d.label}</dt>
-              <dd className="break-all text-right font-medium text-slate-100">{d.value}</dd>
+              <dt className="text-slate-500">{d.label}</dt>
+              <dd className="break-all text-right font-medium text-slate-800">{d.value}</dd>
             </div>
           ))}
         </dl>
 
         {status === 'awaiting' && (
-          <p className="mt-4 flex items-center gap-2 text-sm text-cyan-300">
+          <p className="mt-4 flex items-center gap-2 text-sm text-emerald-700">
             <Loader2 className="h-4 w-4 animate-spin" /> Awaiting confirmation in MetaMask…
           </p>
         )}
         {status === 'pending' && (
-          <p className="mt-4 flex items-center gap-2 text-sm text-amber-300">
+          <p className="mt-4 flex items-center gap-2 text-sm text-amber-700">
             <Loader2 className="h-4 w-4 animate-spin" /> Transaction pending — waiting for block confirmation…
           </p>
         )}
         {status === 'confirmed' && (
-          <p className="mt-4 flex items-center gap-2 text-sm text-emerald-300">
+          <p className="mt-4 flex items-center gap-2 text-sm text-emerald-700">
             <CheckCircle2 className="h-4 w-4" /> Confirmed on Sepolia.
           </p>
         )}
         {status === 'failed' && (
-          <p className="mt-4 flex items-start gap-2 text-sm text-rose-300">
+          <p className="mt-4 flex items-start gap-2 text-sm text-red-600">
             <XCircle className="mt-0.5 h-4 w-4 shrink-0" /> <span className="break-words">{error ?? 'Transaction failed.'}</span>
           </p>
         )}

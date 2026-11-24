@@ -96,21 +96,21 @@ export default function Milestones() {
 
   return (
     <div className="space-y-6">
-      <Link to={`/campaigns/${c.id}`} className="inline-flex items-center gap-1.5 text-sm text-slate-400 hover:text-white"><ArrowLeft className="h-4 w-4" /> Back to campaign</Link>
+      <Link to={`/campaigns/${c.id}`} className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-slate-800"><ArrowLeft className="h-4 w-4" /> Back to campaign</Link>
       <div className="glass flex flex-wrap items-center justify-between gap-4 p-6">
         <div>
-          <h1 className="text-2xl font-extrabold text-white">{c.title}</h1>
-          <p className="mt-1 text-sm text-slate-400">
+          <h1 className="text-2xl font-extrabold text-slate-800">{c.title}</h1>
+          <p className="mt-1 text-sm text-slate-500">
             {released}/{milestones.length} milestones released · Total funded {fmtEth(c.raised)} ETH
-            {myWeight > 0n && <> · Your weight <b className="text-cyan-300">{pct(myWeight, c.raised).toFixed(1)}%</b></>}
+            {myWeight > 0n && <> · Your weight <b className="text-emerald-700">{pct(myWeight, c.raised).toFixed(1)}%</b></>}
           </p>
         </div>
         <StatusBadge status={c.status} />
       </div>
 
-      {c.status === CampaignStatus.Funding && <p className="rounded-xl border border-cyan-400/30 bg-cyan-400/10 p-4 text-sm text-cyan-200">Milestones unlock once the campaign reaches its funding goal.</p>}
-      {c.status === CampaignStatus.Failed && <p className="rounded-xl border border-rose-400/30 bg-rose-400/10 p-4 text-sm text-rose-200">This campaign failed. No milestone can be released; contributors can claim refunds.</p>}
-      {!wallet.isConnected && <p className="rounded-xl border border-amber-400/30 bg-amber-400/10 p-4 text-sm text-amber-200">Connect your wallet to request releases or vote.</p>}
+      {c.status === CampaignStatus.Funding && <p className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-4 text-sm text-emerald-800">Milestones unlock once the campaign reaches its funding goal.</p>}
+      {c.status === CampaignStatus.Failed && <p className="rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm text-red-700">This campaign failed. No milestone can be released; contributors can claim refunds.</p>}
+      {!wallet.isConnected && <p className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-800">Connect your wallet to request releases or vote.</p>}
 
       {milestones.length === 0 ? (
         <EmptyState title="No milestones" />

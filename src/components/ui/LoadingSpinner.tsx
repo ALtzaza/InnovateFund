@@ -2,7 +2,7 @@ import { Loader2 } from 'lucide-react';
 
 export default function LoadingSpinner({ label }: { label?: string }) {
   return (
-    <div className="flex items-center justify-center gap-2 py-10 text-slate-400">
+    <div className="flex items-center justify-center gap-2 py-10 text-slate-500">
       <Loader2 className="h-5 w-5 animate-spin text-electric" />
       {label && <span className="text-sm">{label}</span>}
     </div>
@@ -11,8 +11,8 @@ export default function LoadingSpinner({ label }: { label?: string }) {
 
 export function Skeleton({ className = '' }: { className?: string }) {
   return (
-    <div className={`relative overflow-hidden rounded-lg bg-white/5 ${className}`}>
-      <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.6s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    <div className={`relative overflow-hidden rounded-lg bg-slate-100 ${className}`}>
+      <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.6s_infinite] bg-gradient-to-r from-transparent via-white/70 to-transparent" />
     </div>
   );
 }

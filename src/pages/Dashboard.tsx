@@ -39,9 +39,13 @@ export default function Dashboard() {
 
   return (
     <SidebarLayout>
-      <div>
-        <h1 className="section-title">My Dashboard</h1>
-        <p className="mt-1 font-mono text-sm text-slate-400">{address}</p>
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-navy-900 to-electric px-6 py-7 text-white shadow-card sm:px-8">
+        <div className="bg-grid pointer-events-none absolute inset-0 opacity-60" />
+        <div className="relative">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-emerald-300">Portfolio overview</p>
+          <h1 className="mt-1 text-2xl font-bold tracking-tight !text-white sm:text-3xl">My Dashboard</h1>
+          <p className="mt-2 break-all font-mono text-xs text-blue-100/80 sm:text-sm">{address}</p>
+        </div>
       </div>
 
       <div className="grid grid-cols-2 gap-4 xl:grid-cols-4">
@@ -54,7 +58,7 @@ export default function Dashboard() {
       {error && <ErrorState message={error} onRetry={() => void refresh()} />}
 
       <section>
-        <h2 className="mb-4 text-xl font-bold text-white">Pending Approvals</h2>
+        <h2 className="mb-4 text-xl font-bold text-slate-800">Pending Approvals</h2>
         {pos.pendingVotes.length === 0 ? (
           <EmptyState icon={<Vote className="h-7 w-7" />} title="No votes waiting" description="When an owner requests a milestone release on a campaign you funded, it shows up here." />
         ) : (
@@ -62,8 +66,8 @@ export default function Dashboard() {
             {pos.pendingVotes.map((p) => (
               <div key={`${p.campaign.id}-${p.milestone.index}`} className="glass p-5">
                 <p className="text-xs text-slate-500">Campaign #{p.campaign.id}</p>
-                <p className="font-bold text-white">{p.campaign.title}</p>
-                <p className="mt-1 text-sm text-slate-400">Milestone {p.milestone.index + 1}: {p.milestone.title} · {fmtEth(p.milestone.amount)} ETH</p>
+                <p className="font-bold text-slate-800">{p.campaign.title}</p>
+                <p className="mt-1 text-sm text-slate-500">Milestone {p.milestone.index + 1}: {p.milestone.title} · {fmtEth(p.milestone.amount)} ETH</p>
                 <Link to={`/campaigns/${p.campaign.id}/milestones`} className="btn-primary mt-4">Review &amp; Vote</Link>
               </div>
             ))}
@@ -72,7 +76,7 @@ export default function Dashboard() {
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-bold text-white">Campaigns I Created</h2>
+        <h2 className="mb-4 text-xl font-bold text-slate-800">Campaigns I Created</h2>
         {loading ? (
           <div className="grid gap-6 md:grid-cols-2"><CardSkeleton /><CardSkeleton /></div>
         ) : created.length === 0 ? (
@@ -83,7 +87,7 @@ export default function Dashboard() {
       </section>
 
       <section>
-        <h2 className="mb-4 text-xl font-bold text-white">Campaigns I Funded</h2>
+        <h2 className="mb-4 text-xl font-bold text-slate-800">Campaigns I Funded</h2>
         {funded.length === 0 ? (
           <EmptyState title="No active contributions" action={<Link to="/campaigns" className="btn-primary">Explore Campaigns</Link>} />
         ) : (
@@ -92,22 +96,22 @@ export default function Dashboard() {
       </section>
 
       <section className="glass overflow-hidden">
-        <h2 className="p-6 pb-3 text-xl font-bold text-white">Recent Transactions</h2>
+        <h2 className="p-6 pb-3 text-xl font-bold text-slate-800">Recent Transactions</h2>
         {txs.error ? (
-          <p className="p-6 text-sm text-rose-300">{txs.error}</p>
+          <p className="p-6 text-sm text-red-600">{txs.error}</p>
         ) : recent.length === 0 ? (
-          <p className="p-6 pt-0 text-sm text-slate-400">{txs.loading ? 'Reading contract events…' : 'No on-chain activity for this wallet yet.'}</p>
+          <p className="p-6 pt-0 text-sm text-slate-500">{txs.loading ? 'Reading contract events…' : 'No on-chain activity for this wallet yet.'}</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full min-w-[520px]">
               <thead><tr><th className="th">Type</th><th className="th">Campaign</th><th className="th">Amount</th><th className="th">Date</th><th className="th">Tx</th></tr></thead>
-              <tbody className="divide-y divide-white/5">
+              <tbody className="divide-y divide-slate-100">
                 {recent.map((r) => (
                   <tr key={r.id}>
                     <td className="td">{r.type}</td>
                     <td className="td"><Link className="text-electric hover:underline" to={`/campaigns/${r.campaignId}`}>#{r.campaignId}</Link></td>
                     <td className="td">{r.amount !== undefined ? `${fmtEth(r.amount)} ETH` : '—'}</td>
-                    <td className="td text-slate-400">{formatDate(r.timestamp)}</td>
+                    <td className="td text-slate-500">{formatDate(r.timestamp)}</td>
                     <td className="td"><a className="text-electric hover:underline" href={txUrl(r.txHash)} target="_blank" rel="noopener noreferrer">{shortAddr(r.txHash)}</a></td>
                   </tr>
                 ))}

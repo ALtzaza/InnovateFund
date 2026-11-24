@@ -21,7 +21,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
         <App />
         <Toaster
           position="top-right"
-          toastOptions={{ style: { background: '#0f1830', color: '#e2e8f0', border: '1px solid rgba(255,255,255,0.1)' } }}
+          toastOptions={{ style: { background: '#FFFFFF', color: '#1E293B', border: '1px solid #E2E8F0', boxShadow: '0 8px 24px -8px rgba(15,23,42,.18)' } }}
         />
       </WalletProvider>
     </BrowserRouter>

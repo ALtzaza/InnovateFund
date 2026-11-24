@@ -95,11 +95,11 @@ export default function CreateCampaign() {
   const diff = goalWei ? goalWei - v.total : null;
 
   return (
-    <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_340px]">
+    <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_340px]">
       <div className="space-y-6">
         <div>
           <h1 className="section-title">Start a Campaign</h1>
-          <p className="mt-1 text-slate-400">Define your goal and milestones. Funds are released only after backers approve each milestone.</p>
+          <p className="mt-1 text-slate-500">Define your goal and milestones. Funds are released only after backers approve each milestone.</p>
         </div>
 
         <section className="glass space-y-5 p-6">
@@ -132,17 +132,17 @@ export default function CreateCampaign() {
 
         <section className="glass p-6">
           <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-lg font-bold text-white">Milestones</h2>
+            <h2 className="text-lg font-bold text-slate-800">Milestones</h2>
             <button className="btn-ghost !py-1.5 !text-xs" disabled={milestones.length >= MAX_MILESTONES} onClick={() => setMilestones((ms) => [...ms, { key: keyRef.current++, title: '', description: '', amount: '' }])}>
               <Plus className="h-3.5 w-3.5" /> Add Milestone
             </button>
           </div>
           <div className="space-y-4">
             {milestones.map((m, i) => (
-              <div key={m.key} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
+              <div key={m.key} className="rounded-xl border border-slate-200 bg-slate-50 p-4">
                 <div className="mb-3 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-white">Milestone {i + 1}</span>
-                  <button className="rounded-lg p-1.5 text-slate-500 hover:bg-rose-500/10 hover:text-rose-300 disabled:opacity-30" disabled={milestones.length === 1} onClick={() => setMilestones((ms) => ms.filter((x) => x.key !== m.key))} aria-label="Remove milestone">
+                  <span className="text-sm font-semibold text-slate-800">Milestone {i + 1}</span>
+                  <button className="rounded-lg p-1.5 text-slate-500 hover:bg-red-500/10 hover:text-red-600 disabled:opacity-30" disabled={milestones.length === 1} onClick={() => setMilestones((ms) => ms.filter((x) => x.key !== m.key))} aria-label="Remove milestone">
                     <Trash2 className="h-4 w-4" />
                   </button>
                 </div>
@@ -154,7 +154,7 @@ export default function CreateCampaign() {
               </div>
             ))}
           </div>
-          <div className={`mt-4 flex flex-wrap justify-between gap-2 rounded-xl border p-3 text-sm ${diff === 0n ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300' : 'border-amber-500/30 bg-amber-500/10 text-amber-300'}`}>
+          <div className={`mt-4 flex flex-wrap justify-between gap-2 rounded-xl border p-3 text-sm ${diff === 0n ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-700' : 'border-amber-500/30 bg-amber-500/10 text-amber-700'}`}>
             <span>Total allocated: <b>{fmtEth(v.total)} ETH</b> / Goal: <b>{goalWei ? fmtEth(goalWei) : '—'} ETH</b></span>
             <span>{diff === null ? 'Enter a goal' : diff === 0n ? 'Matches goal ✓' : diff > 0n ? `${fmtEth(diff)} ETH left to allocate` : `${fmtEth(-diff)} ETH over the goal`}</span>
           </div>
@@ -162,22 +162,22 @@ export default function CreateCampaign() {
       </div>
 
       <aside>
-        <div className="glass space-y-4 p-6 lg:sticky lg:top-24">
-          <p className="text-xs font-semibold uppercase tracking-wide text-slate-400">Preview <span className="text-slate-600">(not on-chain yet)</span></p>
-          <h3 className="break-words text-xl font-bold text-white">{title.trim() || 'Campaign name'}</h3>
-          <p className="line-clamp-4 break-words text-sm text-slate-400">{description.trim() || 'Your description will appear here.'}</p>
-          <div className="space-y-1 text-sm text-slate-300">
-            <p>Goal: <b className="text-white">{goalWei ? `${fmtEth(goalWei)} ETH` : '—'}</b></p>
-            <p>Duration: <b className="text-white">{duration || '—'} {unit}</b></p>
-            <p>Milestones: <b className="text-white">{milestones.length}</b></p>
+        <div className="glass space-y-4 p-6 xl:sticky lg:top-24">
+          <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">Preview <span className="text-slate-400">(not on-chain yet)</span></p>
+          <h3 className="break-words text-xl font-bold text-slate-800">{title.trim() || 'Campaign name'}</h3>
+          <p className="line-clamp-4 break-words text-sm text-slate-500">{description.trim() || 'Your description will appear here.'}</p>
+          <div className="space-y-1 text-sm text-slate-600">
+            <p>Goal: <b className="text-slate-800">{goalWei ? `${fmtEth(goalWei)} ETH` : '—'}</b></p>
+            <p>Duration: <b className="text-slate-800">{duration || '—'} {unit}</b></p>
+            <p>Milestones: <b className="text-slate-800">{milestones.length}</b></p>
           </div>
           {v.errors.length > 0 && (
-            <ul className="list-disc space-y-1 pl-5 text-xs text-amber-300">
+            <ul className="list-disc space-y-1 pl-5 text-xs text-amber-700">
               {v.errors.slice(0, 5).map((e) => <li key={e}>{e}</li>)}
               {v.errors.length > 5 && <li>…and {v.errors.length - 5} more</li>}
             </ul>
           )}
-          {walletBlock && <p className="text-sm text-amber-300">{walletBlock}</p>}
+          {walletBlock && <p className="text-sm text-amber-700">{walletBlock}</p>}
           {!wallet.isConnected ? (
             <button className="btn-primary w-full" onClick={() => void wallet.connect()}>Connect Wallet</button>
           ) : !wallet.isCorrectNetwork ? (
@@ -185,7 +185,7 @@ export default function CreateCampaign() {
           ) : (
             <button className="btn-primary w-full" disabled={!!walletBlock || v.errors.length > 0 || flow.isBusy} onClick={submit}>Create Campaign</button>
           )}
-          <Link to="/campaigns" className="block text-center text-xs text-slate-500 hover:text-slate-300">Cancel</Link>
+          <Link to="/campaigns" className="block text-center text-xs text-slate-500 hover:text-slate-600">Cancel</Link>
         </div>
       </aside>
       <TransactionModal flow={flow} />

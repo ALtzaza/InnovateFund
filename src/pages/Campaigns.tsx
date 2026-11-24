@@ -41,7 +41,7 @@ export default function Campaigns() {
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
           <h1 className="section-title">Explore Campaigns</h1>
-          <p className="mt-1 text-slate-400">Every campaign below is read live from the smart contract.</p>
+          <p className="mt-1 text-slate-500">Every campaign below is read live from the smart contract.</p>
         </div>
         <Link to="/create" className="btn-primary"><Plus className="h-4 w-4" /> Start a Campaign</Link>
       </div>
@@ -66,7 +66,7 @@ export default function Campaigns() {
       {error ? (
         <ErrorState message={error} onRetry={() => void refresh()} />
       ) : loading ? (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{[0, 1, 2, 3, 4, 5].map((i) => <CardSkeleton key={i} />)}</div>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">{[0, 1, 2, 3, 4, 5].map((i) => <CardSkeleton key={i} />)}</div>
       ) : list.length === 0 ? (
         <EmptyState
           title={campaigns.length === 0 ? 'No campaigns found' : 'No campaigns match your filters'}
@@ -74,7 +74,7 @@ export default function Campaigns() {
           action={campaigns.length === 0 ? <Link to="/create" className="btn-primary">Create a campaign</Link> : undefined}
         />
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">{list.map((c) => <CampaignCard key={c.id} campaign={c} />)}</div>
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">{list.map((c) => <CampaignCard key={c.id} campaign={c} />)}</div>
       )}
     </div>
   );

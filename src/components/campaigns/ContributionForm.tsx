@@ -69,9 +69,9 @@ export default function ContributionForm({ campaign, onDone }: { campaign: Campa
 
   return (
     <div className="glass p-6">
-      <h3 className="text-lg font-bold text-white">Contribute</h3>
-      <p className="mt-1 text-sm text-slate-400">
-        Wallet balance: <span className="font-semibold text-cyan-300">{wallet.balance !== null ? `${fmtEth(wallet.balance, 4)} ETH` : '—'}</span>
+      <h3 className="text-lg font-bold text-slate-800">Contribute</h3>
+      <p className="mt-1 text-sm text-slate-500">
+        Wallet balance: <span className="font-semibold text-emerald-700">{wallet.balance !== null ? `${fmtEth(wallet.balance, 4)} ETH` : '—'}</span>
       </p>
 
       <label className="label mt-5" htmlFor="amount">Amount (ETH)</label>
@@ -95,7 +95,7 @@ export default function ContributionForm({ campaign, onDone }: { campaign: Campa
         </button>
       </div>
 
-      {blocker && amount.trim() !== '' && <p className="mt-3 text-sm text-amber-300">{blocker}</p>}
+      {blocker && amount.trim() !== '' && <p className="mt-3 text-sm text-amber-700">{blocker}</p>}
 
       {!wallet.isConnected ? (
         <button className="btn-primary mt-5 w-full" onClick={() => void wallet.connect()}>
@@ -108,7 +108,7 @@ export default function ContributionForm({ campaign, onDone }: { campaign: Campa
           Contribute
         </button>
       )}
-      {wallet.isConnected && wallet.isCorrectNetwork && !open && <p className="mt-3 text-sm text-slate-400">{blocker}</p>}
+      {wallet.isConnected && wallet.isCorrectNetwork && !open && <p className="mt-3 text-sm text-slate-500">{blocker}</p>}
 
       <TransactionModal flow={flow} />
     </div>
